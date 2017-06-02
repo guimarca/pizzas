@@ -1,0 +1,16 @@
+<div layout-xs="column" layout="row" class="md-padding" layout-wrap>
+    <div flex-gt-sm="50" ng-repeat="pizza in pizzas">
+        <md-card>
+            <img ng-src="{{pizza.foto | fotoToUrl}}" alt="{{pizza.nombre}}" title="{{pizza.nombre}}">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{pizza.nombre}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <!--<md-card-content></md-card-content>-->
+            <md-card-actions layout="column" layout-align="end center">
+                <md-button ui-sref="viewPizza({id: pizza.id})">Ver detalles</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</div>

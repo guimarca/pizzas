@@ -1,0 +1,41 @@
+<div flex="100">
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                Añade una nueva Pizza
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content>
+
+            <form name="createPizzaForm" enctype="multipart/form-data"
+                  ng-controller="createPizzaController" ng-submit="createPizzaForm.$valid && savePizza(pizza)">
+
+                <md-input-container class="md-block" flex="80">
+                    <label>Nombre</label>
+                    <input type="text" ng-model="pizza.nombre" required>
+                </md-input-container>
+
+                <md-input-container class="md-block" flex="50">
+                    <label>Foto</label>
+                    <img ng-src="{{image_source}}">
+                    <input type="file" id="trigger" onchange="angular.element(this).scope().setFile(this)" accept="image/*" required>
+                </md-input-container>
+
+                <md-input-container class="md-block" flex="80">
+                    <label>Ingredientes</label>
+                    <md-select ng-model="pizza.ingredientes" multiple>
+                        <md-option ng-repeat="ingrediente in ingredientes" value="{{ingrediente.id}}">
+                            {{ingrediente.nombre}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+
+                <div>
+                    <md-button type="submit" class="md-raised md-primary">Guardar</md-button>
+                </div>
+            </form>
+        </md-card-content>
+    </md-card>
+</div>

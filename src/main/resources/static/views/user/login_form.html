@@ -1,0 +1,39 @@
+
+<md-content ng-controller="loginController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2><span>PIZZERÍA - Login</span></h2>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="loginForm" ng-submit="loginForm.$valid && login(usuario)">
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input type="text" name="email" ng-model="usuario.email" required=""/>
+                    <div ng-messages="loginForm.email.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Introduce tu correo.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="usuario.password" required=""/>
+                    <div ng-messages="loginForm.password.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Introduce tu contraseña.</div>
+                    </div>
+                </md-input-container>
+
+                <md-button type="submit" ng-disabled="!loginForm.$valid" class="md-raised md-primary">Login</md-button>
+
+                <md-button ng-click="authenticate('github')">Login con Github</md-button>
+
+            </form>
+            <md-input-container class="md-block" style="text-align: center">
+                <div style="text-align: right"><a ui-sref="register">Regístrate</a></div>
+
+            </md-input-container>
+        </md-card-content>
+    </md-card>
+</md-content>
+

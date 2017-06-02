@@ -1,0 +1,56 @@
+
+<md-content ng-controller="registerController" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2><span>PIZZERÍA - Registro</span></h2>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="registerForm" ng-submit="registerForm.$valid && addUsuario(usuario)">
+
+                <div ng-messages="server_errors" role="alert">
+                    <div ng-message="error" class="">Hay un error en el servidor, disculpa las molestias. Prueba más tarde.</div>
+                </div>
+
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="usuario.email" required />
+                    <div ng-messages="registerForm.email.$error" role="alert">
+                        <div ng-message="required" class="">Introduce tu correo.</div>
+                        <div ng-message="email" class="">Formato de correo incorrecto.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="usuario.password" required="" />
+                    <div ng-messages="registerForm.password.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Introduce tu contraseña.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" ng-model="usuario.nombre" required="" />
+                    <div ng-messages="registerForm.nombre.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Introduce tu nombre.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Apellidos</label>
+                    <input type="text" name="apellidos" ng-model="usuario.apellidos" required="" />
+                    <div ng-messages="registerForm.apellidos.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Introduce tus apellidos.</div>
+                    </div>
+                </md-input-container>
+
+
+                <md-button type="submit" ng-disabled="!registerForm.$valid" class="md-raised md-primary">Enviar</md-button>
+            </form>
+
+        </md-card-content>
+    </md-card>
+</md-content>
+

@@ -1,0 +1,54 @@
+
+<!-- Container #1 (see wireframe) -->
+<md-toolbar layout="row" class="md-toolbar-tools" hide-gt-sm>
+	<md-button class="md-icon-button md-heading docs-logotype" aria-label="Menu">
+		<i class="material-icons" ng-click="toggleLeft()">menu</i>
+	</md-button>
+	<h1 class="docs-logotype md-heading ng-isolate-scope">
+		PIZZERÍA
+	</h1>
+</md-toolbar>
+
+<!-- Container #2 -->
+<div flex layout="row" layout-sm="column">
+
+	<!-- Container #3 -->
+	<md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+		<header class="nav-header" style="text-align: center">
+			<img src="img/pizza-icon.png" style="width: 50%; padding: 10%" alt>
+			<h2 class="docs-logotype md-heading ng-isolate-scope">PIZZERÍA</h2>
+		</header>
+
+
+		<md-list>
+			<!-- List item #1 -->
+			<md-list-item>
+				<md-button ui-sref="listPizza" ng-click="toggleLeft()">
+					Ver Pizzas
+				</md-button>
+			</md-list-item>
+
+			<!-- List item #2 -->
+			<md-list-item>
+				<md-button ui-sref="createPizza" ng-click="toggleLeft()">
+					Añadir Pizza
+				</md-button>
+			</md-list-item>
+
+			<!-- List item #3 -->
+			<md-list-item>
+				<md-button ui-sref="logout" ng-click="toggleLeft()">
+					Logout
+				</md-button>
+			</md-list-item>
+
+		</md-list>
+
+	</md-sidenav>
+
+	<!-- Container #4 -->
+	<md-content flex id="content">
+		<ui-view></ui-view>
+	</md-content>
+
+</div>

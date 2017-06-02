@@ -1,0 +1,109 @@
+<div layout-xs="column" layout="row" layout-wrap class="md-padding">
+    <div flex-gt-sm="50">
+        <md-card>
+            <img ng-src="{{pizza.foto | fotoToUrl}}" class="md-card-image" alt="{{pizza.nombre}}" title="{{pizza.nombre}}">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{pizza.nombre}}</span>
+                </md-card-title-text>
+
+                <span class="md-subhead">
+                        Precio: {{pizza.precio}}€
+                </span>
+            </md-card-title>
+        </md-card>
+    </div>
+
+    <div flex-gt-sm="50">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    Ingredientes
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+                <ul>
+                    <li ng-repeat="ingrediente in pizza.ingredientes">
+                        {{ingrediente.nombre}}: {{ingrediente.precio}}€
+                    </li>
+                </ul>
+            </md-card-content>
+        </md-card>
+    </div>
+
+
+    <div flex="100">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    Deja tu comentario
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+                <form name="comentarioForm" ng-submit="comentarioForm.$valid && addComentario(comentario)">
+                    <md-input-container class="md-block">
+                        <label>Puntuación</label>
+                        <input type="number" name="puntuacion" ng-model="comentario.puntuacion" required="" min="0" max="10"/>
+                        <div ng-messages="comentarioForm.puntuacion.$error" role="alert" multiple="" md-auto-hide="false">
+                            <div ng-message="required" class="my-message">Indica una puntuación.</div>
+                            <div ng-message="min" class="my-message">Debe estar entre 0 y 10.</div>
+                            <div ng-message="max" class="my-message">Debe estar entre 0 y 10.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <label>Texto</label>
+                        <textarea name="texto" ng-model="comentario.texto" rows="3" required=""></textarea>
+                        <div ng-messages="comentarioForm.texto.$error" role="alert">
+                            <div ng-message="required" class="my-message">Debes escribir algo.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-button type="submit" ng-disabled="!comentarioForm.$valid" class="md-raised md-primary">Enviar</md-button>
+                </form>
+            </md-card-content>
+        </md-card>
+    </div>
+
+
+
+    <div flex="100">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    Comentarios
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content>
+
+
+                <md-list ng-show="pizza.comentarios.length > 0">
+                    <md-list-item class="md-3-line" ng-repeat="comentario in pizza.comentarios">
+                        <div class="md-list-item-text">
+                            <h3>{{comentario.usuario.nombre}} {{comentario.usuario.apellidos}}</h3>
+                            <h4>{{comentario.fechaFormateada}}</h4>
+                            <p>{{comentario.texto}}</p>
+                        </div>
+                        <h4 class="md-secondary">Puntuación: {{comentario.puntuacion}}</h4>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-list-item>
+                </md-list>
+
+
+                <div ng-show="pizza.comentarios.length == 0">
+                    Sin comentarios todavía.
+                </div>
+            </md-card-content>
+        </md-card>
+    </div>
+
+</div>
+
+
+
+
+
+
