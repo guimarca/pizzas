@@ -1,15 +1,13 @@
 package mc.guillem.pizzas.security;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import static com.sun.xml.internal.ws.policy.sourcemodel.wspolicy.XmlToken.Ignorable;
+import mc.guillem.pizzas.config.Config;
 
 public class GithubCredentials {
 
     private String code;
     private String clientId;
     private String redirectUri;
-    private String clientSecret = "9fbf3cc90c8a72a3e35bba62c9084a48a91c757b";
+    private String clientSecret = Config.GITHUB_CLIENT_SECRET;
 
 
     public GithubCredentials(String code, String clientId, String redirectUri) {

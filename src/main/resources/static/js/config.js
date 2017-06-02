@@ -117,9 +117,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$authProvider', function($s
  * Filters
  */
 app.filter("fotoToUrl", function(){
-    return function(input){
-        if (typeof input === 'undefined')
-            return false;
+    return function(input){;
         return config.img_url + "/" + input;
     }
 });
